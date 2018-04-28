@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <div class="logo"></div>
     {{#webp}}
-    <Images :src="img" webp lazy/>
+    <Images :src="img" webp/>
     {{/webp}}
     {{#router}}
     <router-view/>
@@ -34,15 +34,28 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import "./css/mixin.scss";
+
+body {
+  margin: 0 auto;
+  min-width: 320px;
+  max-width: 768px;
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, Helvetica, "Microsoft YaHei", Arial, sans-serif;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
 #app {
-  font-family: "Helvetica Neue"
-  , Helvetica, Arial, "PingFang SC", "Hiragino Sans GB",
-   "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+.logo{
+  @include bg-wh('./img/logo.png');
 }
 </style>
