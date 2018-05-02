@@ -4,9 +4,16 @@
 {{/if_eq}}
 import Vue from 'vue'
 {{#webp}}
-import Images from './components/vt-image/index';
-// global install
-Vue.component('Images', Images);
+import VueLazyload from 'vue-lazyload';
+
+Vue.use(VueLazyload, {
+  filter: {
+    webp(listener, options) {
+      if (!options.supportWebp || listener.src.indexOf("data:image/") === 0) return;
+      listener.src += '.webp'
+    }
+  }
+})
 {{/webp}}
 import App from './App'
 {{#router}}

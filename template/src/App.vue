@@ -2,7 +2,7 @@
   <div id="app">
     <div class="logo"></div>
     {{#webp}}
-    <Images :src="img" webp/>
+    <img v-for="(img, index) in imgs" :key="index" v-lazy="img"/>
     {{/webp}}
     {{#router}}
     <router-view/>
@@ -17,10 +17,7 @@
 import HelloWorld from './components/HelloWorld'
 
 {{/unless}}
-{{#webp}}
-const img = require("./assets/logo.png");
 
-{{/webp}}
 export default {
   name: 'App'{{#router}}{{else}},
   components: {
@@ -28,7 +25,9 @@ export default {
   }{{/router}}{{#webp}},
   data() {
     return {
-      img,
+      imgs: [
+        require('./img/logo.png'),
+      ],
     };
   },{{/webp}}
 }
