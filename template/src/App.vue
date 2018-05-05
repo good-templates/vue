@@ -14,9 +14,10 @@
 
 <script>
 {{#unless router}}
-import HelloWorld from './components/HelloWorld'
+import HelloWorld from './components/HelloWorld.vue'
 
 {{/unless}}
+const img = require('./img/logo.png');
 
 export default {
   name: 'App'{{#router}}{{else}},
@@ -26,7 +27,7 @@ export default {
   data() {
     return {
       imgs: [
-        require('./img/logo.png'),
+        img,
       ],
     };
   },{{/webp}}

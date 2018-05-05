@@ -49,10 +49,10 @@ module.exports = {
     {{/if_eq}}
     {{#if_eq lintConfig "airbnb"}}
     // don't require .vue extension when importing
-    'import/extensions': ['error', 'always', {
-      js: 'never',
-      vue: 'never'
-    }],
+    // 'import/extensions': ['error', 'always', {
+    //   js: 'never',
+    //   vue: 'never'
+    // }],
     // disallow reassignment of function parameters
     // disallow parameter object manipulation except for specific exclusions
     'no-param-reassign': ['error', {
