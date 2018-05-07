@@ -20,8 +20,8 @@ import Vue from 'vue';
 import PageLoading from './components/PageLoading.vue';
 {{#unless router}}
 import HelloWorld from './components/HelloWorld.vue'
-
 {{/unless}}
+
 Vue.component('PageLoading', PageLoading);
 const img = require('./img/logo.png');
 
@@ -29,15 +29,15 @@ export default {
   name: 'App'{{#router}}{{else}},
   components: {
     HelloWorld
-  }{{/router}}{{#webp}},
+  }{{/router}},
   data() {
     return {
-      pageLoaing: true,
+      pageLoaing: true,{{#webp}}
       imgs: [
         img,
-      ],
+      ],{{/webp}}
     };
-  },{{/webp}}
+  },
   mounted() {
     setTimeout(() => {
       this.pageLoaing = false;
