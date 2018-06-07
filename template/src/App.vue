@@ -6,6 +6,8 @@
     {{/webp}}
     {{#router}}
     <router-view/>
+    {{else}}
+    <HelloWorld/>
     {{/router}}
     
   </div>
@@ -14,14 +16,21 @@
 <script>
 import Vue from 'vue';
 import Loading from './components/common/Loading';
+{{#unless router}}
+import HelloWorld from './components/HelloWorld'
+{{/unless}}
 
+{{#webp}}
 const img = require('./img/login/logo.png');
-
+{{/webp}}
 export default {
-  name: 'App',
+  name: 'App',{{#router}}{{else}}
+  components: {
+    HelloWorld
+  },{{/router}}
   data() {
     return {
-      pageLoaing: true,{{#webp}}
+      {{#webp}}
       imgs: [
         img,
       ],{{/webp}}
