@@ -1,0 +1,43 @@
+// zy-anim--fade
+.zy-anim--fade-enter-active,
+.zy-anim--fade-leave-active {
+  transition: opacity .5s
+}
+
+.zy-anim--fade-enter,
+.zy-anim--fade-leave-active {
+  opacity: 0
+}
+
+// zy-anim--topDown
+.zy-anim--topDown-enter-active,
+.zy-anim--topDown-leave-active {
+  transition: transform .3s
+}
+
+.zy-anim--topDown-enter,
+.zy-anim--topDown-leave-active {
+  transform: translateY(-100%);
+}
+
+// zy-anim--bottomUp
+.zy-anim--bottomUp-enter-active,
+.zy-anim--bottomUp-leave-active {
+  transition: transform .3s
+}
+
+.zy-anim--bottomUp-enter,
+.zy-anim--bottomUp-leave-active {
+  transform: translateY(100%);
+}
+
+// zy-anim--scale
+.zy-anim--scale-enter-active,
+.zy-anim--scale-leave-active {
+  transition: transform .3s
+}
+
+.zy-anim--scale-enter,
+.zy-anim--scale-leave-active {
+  transform: scale(1.1);
+}

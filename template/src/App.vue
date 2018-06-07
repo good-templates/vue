@@ -6,30 +6,19 @@
     {{/webp}}
     {{#router}}
     <router-view/>
-    {{else}}
-    <HelloWorld/>
     {{/router}}
-    <transition name="fade">
-      <PageLoading v-if="pageLoaing"/>
-    </transition>
+    
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import PageLoading from './components/PageLoading.vue';
-{{#unless router}}
-import HelloWorld from './components/HelloWorld.vue'
-{{/unless}}
+import Loading from './components/common/Loading';
 
-Vue.component('PageLoading', PageLoading);
-const img = require('./img/logo.png');
+const img = require('./img/login/logo.png');
 
 export default {
-  name: 'App'{{#router}}{{else}},
-  components: {
-    HelloWorld
-  }{{/router}},
+  name: 'App',
   data() {
     return {
       pageLoaing: true,{{#webp}}
@@ -38,10 +27,17 @@ export default {
       ],{{/webp}}
     };
   },
+  created() {
+    Loading.show('', {
+      bgcolor: 'rgba(255, 255, 255, 1)',
+      innercolor: 'rgba(0, 0, 0, 0)',
+      mode: 'page',
+    });
+  },
   mounted() {
-    setTimeout(() => {
-      this.pageLoaing = false;
-    }, 2000);
+    window.onload = () => {
+      Loading.hide();
+    };
   },
 }
 </script>
@@ -53,7 +49,6 @@ body {
   margin: 0 auto;
   min-width: 320px;
   max-width: 768px;
-  width: 100%;
   padding-top: constant(safe-area-inset-top);
   padding-left: constant(safe-area-inset-left);
   padding-right: constant(safe-area-inset-right);
@@ -65,7 +60,7 @@ body {
   font-family: -apple-system, Helvetica, "Microsoft YaHei", Arial, sans-serif;
 }
 
-html {
+html,body {
   width: 100%;
   height: 100%;
 }
@@ -73,14 +68,13 @@ html {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 .logo{
-  @include bg-wh('./img/logo.png');
+  @include bg-wh('./img/login/logo.png');
 }
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
+
 </style>
